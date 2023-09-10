@@ -11,8 +11,9 @@ namespace TodoListApp.Model
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public String Description { get; set; }
+        public string Title { get; set; } 
+        public bool Open { get; set; } = true;
+        public String? Description { get; set; }
         public List<TodoItem> Tasks { get; set; }
 
         
