@@ -10,7 +10,8 @@ namespace TodoListApp.Model
     {
         public string Name { get; set; }
         public String Description { get; set; }
-        public List<TodoTask> Tasks { get; set; }
+        public List<TodoItem> Tasks { get; set; }
+
         
     }
 }

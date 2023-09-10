@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TodoListApp.Model
 {
-    public class TodoTask
+    public class TodoItem
     {
         public int Id { get; set; }
         public string Title { get; set; }
