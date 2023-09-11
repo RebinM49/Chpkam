@@ -10,8 +10,8 @@ namespace TodoListApp.Data
     internal interface IRegisterList
     {
         bool CreateList(TodoList todoList);
-        bool DeleteList(TodoList todoList);
-        bool UpdateList(TodoList todoList);
-        bool GetList(TodoList todoList);
+        bool DeleteList(int id);
+        TodoList UpdateList(TodoList todoList);
+        List<TodoList> GetList(TodoList todoList);
     }
 }
