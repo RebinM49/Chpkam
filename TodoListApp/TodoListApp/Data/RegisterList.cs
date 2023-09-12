@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,18 +20,22 @@ namespace TodoListApp.Data
             }
             return true;
         }
+        public List<TodoList> GetAllList()
+        {
+            using (TodoListDbContext _dbcontext = new TodoListDbContext())
+            {
+                return _dbcontext.TodoList.Where<TodoList>(L => L.Open == true).ToList<TodoList>();
+            }
+        }
 
-        public bool DeleteList(TodoList todoList)
+        public bool DeleteList(int id)
         {
             throw new NotImplementedException();
         }
 
-        public bool GetList(TodoList todoList)
-        {
-            throw new NotImplementedException();
-        }
+      
 
-        public bool UpdateList(TodoList todoList)
+        public TodoList UpdateList(TodoList todoList)
         {
             throw new NotImplementedException();
         }
