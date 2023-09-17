@@ -9,7 +9,7 @@ using TodoListApp.Model;
 
 namespace TodoListApp.View
 {
-    public class ListView :  IListView
+    public class ListView : IListView
     {
         IRegisterList _registerList;
 
@@ -17,44 +17,73 @@ namespace TodoListApp.View
         {
             _registerList = registerList;
         }
+
         public static void RunView()
         {
             CommonOutputTexts.GenerateHeading("List Menu");
         }
 
-        public void DisplayDeleteSection()
+        public void DisplayDeleteSectionUI()
+        {
+
+        }
+
+
+
+
+        public void DisplayUpdateSectionUI()
         {
             throw new NotImplementedException();
         }
 
-        public void DisplayListSection()
-        {
-            throw new NotImplementedException();
-        }
 
-        public void DisplayUpdateSection()
+        public void DisplayListsSectionUI()
         {
-            throw new NotImplementedException();
-        }
-
-
-        public void DisplayListsSection()
-        {
-            //Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.ResetColor();
+            Console.WriteLine("\t<-> <->  This is your ToDo Lists <-> <->");
             var lists = _registerList.GetAllList();
-            var sublist = lists.Select(x => x.Tasks);
+
             foreach (var list in lists)
             {
-                
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 if (list.Open)
                 {
-                    Console.WriteLine($"Title : {list.Title}\t Description : {list.Description}" +
-                    $"\t{list.Tasks.First<ToDoItem>().Title}");
+                    Console.WriteLine($"Title : {list.Title}\t Description : {list.Description}\t");
+                    foreach (var task in list.Tasks)
+                    {
+                        Console.ResetColor();
+                        Console.WriteLine();
+                        Console.WriteLine($"Item {task.Id}\t{task.Title}");
+                    }
                 }
-                
-                
             }
             Console.ResetColor();
-        }  
+        }
+
+        public void DisplayListSectionUI()
+        {
+
+        }
+
+        public void DisplayAddListUI()
+        {
+            Console.ResetColor();
+            var list = new ToDoList();
+            Console.WriteLine("Enter Title for new List : ");
+            list.Title = Console.ReadLine();
+
+            Console.WriteLine("Enter description for new list : ");
+            list.Description = Console.ReadLine();
+
+            Console.WriteLine("Enter status for new list : ");
+            list.Open = (Console.ReadLine().ToLower()) == "open" ? true : false;
+
+            
+            _registerList.AddList(list);
+
+            
+
+
+        }
     }
 }
