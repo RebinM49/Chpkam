@@ -16,7 +16,7 @@ namespace TodoListApp.Data
             {
                 _dbcontext.ToDoList.Add(todoList);
                 _dbcontext.SaveChanges();
-               
+
             }
             return true;
         }
@@ -31,10 +31,20 @@ namespace TodoListApp.Data
 
         public bool DeleteList(int id)
         {
-            throw new NotImplementedException();
+            using (TodoListDbContext _dbcontext = new TodoListDbContext())
+            {
+                var list = _dbcontext.ToDoList.Find(id);
+                if (list != null)
+                {
+                    _dbcontext.ToDoList.Remove(list);
+                    _dbcontext.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
         }
 
-      
+
 
         public ToDoList UpdateList(ToDoList todoList)
         {
