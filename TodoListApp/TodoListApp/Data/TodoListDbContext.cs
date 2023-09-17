@@ -18,7 +18,7 @@ namespace TodoListApp.Data
             base.OnConfiguring(optionsBuilder);
         }
 
-        public DbSet<TodoList> TodoList { get; set; }
-        public DbSet<TodoItem> TodoItem { get; set; }
+        public DbSet<ToDoList> ToDoList { get; set; }
+        public DbSet<ToDoItem> TodoItem { get; set; }
     }
 }
