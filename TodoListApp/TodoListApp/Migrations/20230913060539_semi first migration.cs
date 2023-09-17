@@ -1,18 +1,17 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace TodoListApp.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMigration : Migration
+    public partial class semifirstmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TodoList",
+                name: "ToDoList",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -23,7 +22,7 @@ namespace TodoListApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TodoList", x => x.Id);
+                    table.PrimaryKey("PK_ToDoList", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -37,26 +36,23 @@ namespace TodoListApp.Migrations
                     EstimatedTime = table.Column<int>(type: "INTEGER", nullable: true),
                     SpendTime = table.Column<int>(type: "INTEGER", nullable: true),
                     Priority = table.Column<int>(type: "INTEGER", nullable: false),
-                    DateAdded = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DateDeleted = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    ListId = table.Column<int>(type: "INTEGER", nullable: false),
-                    TodoListId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ToDolistId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TodoItem", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TodoItem_TodoList_TodoListId",
-                        column: x => x.TodoListId,
-                        principalTable: "TodoList",
+                        name: "FK_TodoItem_ToDoList_ToDolistId",
+                        column: x => x.ToDolistId,
+                        principalTable: "ToDoList",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_TodoItem_TodoListId",
+                name: "IX_TodoItem_ToDolistId",
                 table: "TodoItem",
-                column: "TodoListId");
+                column: "ToDolistId");
         }
 
         /// <inheritdoc />
@@ -66,7 +62,7 @@ namespace TodoListApp.Migrations
                 name: "TodoItem");
 
             migrationBuilder.DropTable(
-                name: "TodoList");
+                name: "ToDoList");
         }
     }
 }

@@ -11,8 +11,8 @@ using TodoListApp.Data;
 namespace TodoListApp.Migrations
 {
     [DbContext(typeof(TodoListDbContext))]
-    [Migration("20230910165921_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20230913060539_semi first migration")]
+    partial class semifirstmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,25 +20,16 @@ namespace TodoListApp.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
 
-            modelBuilder.Entity("TodoListApp.Model.TodoItem", b =>
+            modelBuilder.Entity("TodoListApp.Model.ToDoItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("DateDeleted")
-                        .HasColumnType("TEXT");
-
                     b.Property<bool>("Done")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("EstimatedTime")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ListId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Priority")
@@ -51,17 +42,17 @@ namespace TodoListApp.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TodoListId")
+                    b.Property<int>("ToDolistId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TodoListId");
+                    b.HasIndex("ToDolistId");
 
                     b.ToTable("TodoItem");
                 });
 
-            modelBuilder.Entity("TodoListApp.Model.TodoList", b =>
+            modelBuilder.Entity("TodoListApp.Model.ToDoList", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,21 +70,21 @@ namespace TodoListApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TodoList");
+                    b.ToTable("ToDoList");
                 });
 
-            modelBuilder.Entity("TodoListApp.Model.TodoItem", b =>
+            modelBuilder.Entity("TodoListApp.Model.ToDoItem", b =>
                 {
-                    b.HasOne("TodoListApp.Model.TodoList", "TodoList")
+                    b.HasOne("TodoListApp.Model.ToDoList", "ToDoList")
                         .WithMany("Tasks")
-                        .HasForeignKey("TodoListId")
+                        .HasForeignKey("ToDolistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("TodoList");
+                    b.Navigation("ToDoList");
                 });
 
-            modelBuilder.Entity("TodoListApp.Model.TodoList", b =>
+            modelBuilder.Entity("TodoListApp.Model.ToDoList", b =>
                 {
                     b.Navigation("Tasks");
                 });
