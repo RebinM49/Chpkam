@@ -10,21 +10,22 @@ namespace TodoListApp.Data
 {
     public class RegisterList : IRegisterList
     {
-        public bool CreateList(TodoList todoList)
+        public bool CreateList(ToDoList todoList)
         {
             using (TodoListDbContext _dbcontext = new TodoListDbContext())
             {
-                _dbcontext.TodoList.Add(todoList);
+                _dbcontext.ToDoList.Add(todoList);
                 _dbcontext.SaveChanges();
                
             }
             return true;
         }
-        public List<TodoList> GetAllList()
+        public List<ToDoList> GetAllList()
         {
             using (TodoListDbContext _dbcontext = new TodoListDbContext())
             {
-                return _dbcontext.TodoList.Where<TodoList>(L => L.Open == true).ToList<TodoList>();
+                var list = _dbcontext.ToDoList.Include(p => p.Tasks).ToList();
+                return list;
             }
         }
 
@@ -35,7 +36,7 @@ namespace TodoListApp.Data
 
       
 
-        public TodoList UpdateList(TodoList todoList)
+        public ToDoList UpdateList(ToDoList todoList)
         {
             throw new NotImplementedException();
         }

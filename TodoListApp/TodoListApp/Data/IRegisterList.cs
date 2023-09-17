@@ -7,11 +7,11 @@ using TodoListApp.Model;
 
 namespace TodoListApp.Data
 {
-    internal interface IRegisterList
+    public interface IRegisterList
     {
-        public bool CreateList(TodoList todoList);
+        public bool CreateList(ToDoList todoList);
         public bool DeleteList(int id);
-        public TodoList UpdateList(TodoList todoList);
-        public List<TodoList> GetAllList();
+        public ToDoList UpdateList(ToDoList todoList);
+        public List<ToDoList> GetAllList();
     }
 }
