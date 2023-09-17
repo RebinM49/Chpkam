@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TodoListApp.Model
 {
-    public class TodoItem
+    public class ToDoItem
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -17,10 +17,8 @@ namespace TodoListApp.Model
         public int? EstimatedTime { get; set; } = 20;
         public int? SpendTime { get; set; }
         public Importance Priority { get; set; } = Importance.Medium;
-        public DateTime DateAdded { get; set; }
-        public DateTime? DateDeleted { get; set; }
 
-        public int ListId { get; set; }
-        public TodoList TodoList { get; set; }
+        public virtual ToDoList ToDoList { get; set; }
+        public int ToDolistId { get; set; }
     }
 }

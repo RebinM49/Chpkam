@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 
 namespace TodoListApp.Model
 {
-    public class TodoList
+    public class ToDoList
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Title { get; set; } 
-        public bool Open { get; set; } = true;
+        public bool Open { get; set; }
         public String? Description { get; set; }
-        public List<TodoItem> Tasks { get; set; }
+        
+
+        public virtual List<ToDoItem> Tasks { get; set; }
 
         
     }
