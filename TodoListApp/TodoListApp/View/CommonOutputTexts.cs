@@ -29,9 +29,6 @@ namespace TodoListApp.View
             Console.WriteLine($"[1] Create new List \t [2] Show ToDo Lists \t [3] Close a List \t [4] Update existing list");
             Console.ResetColor();
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Choose Operation type : ");
-            Console.ResetColor();
             
         }
     }
