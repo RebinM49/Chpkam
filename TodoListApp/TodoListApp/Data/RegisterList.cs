@@ -10,7 +10,7 @@ namespace TodoListApp.Data
 {
     public class RegisterList : IRegisterList
     {
-        public bool CreateList(ToDoList todoList)
+        public bool AddList(ToDoList todoList)
         {
             using (TodoListDbContext _dbcontext = new TodoListDbContext())
             {
@@ -46,9 +46,14 @@ namespace TodoListApp.Data
 
 
 
-        public ToDoList UpdateList(ToDoList todoList)
+        public ToDoList UpdateList(ToDoList newtodoList)
         {
-            throw new NotImplementedException();
+            using(TodoListDbContext _dbcontext = new TodoListDbContext())
+            {
+                _dbcontext.Update<ToDoList>(newtodoList);
+                _dbcontext.SaveChanges();
+                return newtodoList;
+            }
         }
     }
 }

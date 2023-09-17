@@ -9,7 +9,7 @@ namespace TodoListApp.Data
 {
     public interface IRegisterList
     {
-        public bool CreateList(ToDoList todoList);
+        public bool AddList(ToDoList todoList);
         public bool DeleteList(int id);
         public ToDoList UpdateList(ToDoList todoList);
         public List<ToDoList> GetAllList();
