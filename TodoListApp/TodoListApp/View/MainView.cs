@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TodoListApp.Data;
-using TodoListApp.Model;
-
-namespace TodoListApp.View
+﻿namespace TodoListApp.View
 {
     public  class MainView : IView
     {
@@ -43,28 +35,34 @@ namespace TodoListApp.View
                     DisplayLists();
                     break;
                 case "3":
-                    ShowList();
+                    DisplayCloseList();
                     break;
                 case "4":
-                    ShowList();
+                    DisplayUpdateList();
                     break;
             }
         }
 
-        private void ShowList()
+        private void DisplayCloseList()
         {
-
-            Console.WriteLine("\t 2");
+            _listview.DisplayDeleteSectionUI();
+            GetOperationType();
         }
 
         private void DisplayLists()
         {
             _listview.DisplayListsSectionUI();
+            GetOperationType();
         }
         private void DisplayCreateList()
         {
             _listview.DisplayAddListUI();
             this.GetOperationType();
+        }
+        private void DisplayUpdateList()
+        {
+            _listview.DisplayUpdateSectionUI();
+            GetOperationType();
         }
     }
 }
