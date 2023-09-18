@@ -25,17 +25,31 @@ namespace TodoListApp.View
 
         public void DisplayDeleteSectionUI()
         {
-
+            Console.WriteLine("Enter the Id of list you want to delete : ");
+            int id;
+            bool success = int.TryParse(Console.ReadLine(),out id);
+            if (success)
+            {
+                bool deleted =_registerList.DeleteList(id);
+                if (deleted)
+                {
+                    Console.WriteLine($"List by {id} deleted");
+                }
+                else
+                {
+                    Console.WriteLine("id out of range! ");
+                }
+            }
+            else
+            {
+                Console.WriteLine("The Id you Entered is invalid");
+            }
         }
-
-
-
 
         public void DisplayUpdateSectionUI()
         {
             throw new NotImplementedException();
         }
-
 
         public void DisplayListsSectionUI()
         {
@@ -48,7 +62,7 @@ namespace TodoListApp.View
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 if (list.Open)
                 {
-                    Console.WriteLine($"Title : {list.Title}\t Description : {list.Description}\t");
+                    Console.WriteLine($"Id : {list.Id}\t Title : {list.Title}\t Description : {list.Description}\t");
                     foreach (var task in list.Tasks)
                     {
                         Console.ResetColor();
@@ -56,6 +70,7 @@ namespace TodoListApp.View
                         Console.WriteLine($"Item {task.Id}\t{task.Title}");
                     }
                 }
+                Console.WriteLine();
             }
             Console.ResetColor();
         }
