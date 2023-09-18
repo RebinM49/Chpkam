@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TodoListApp.View
 {
-    internal interface IView
+    public interface IView
     {
         void RunView();
     }

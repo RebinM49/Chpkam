@@ -4,6 +4,7 @@
     {
 
         IListView _listview;
+        I
 
         public MainView(IListView listview)
         {
@@ -29,7 +30,7 @@
             switch (input)
             {
                 case "1":
-                    DisplayCreateList();
+                    DisplayAddList();
                     break;
                 case "2":
                     DisplayLists();
@@ -38,7 +39,7 @@
                     DisplayCloseList();
                     break;
                 case "4":
-                    DisplayUpdateList();
+                    DisplayAddToDoItem();
                     break;
             }
         }
@@ -54,14 +55,14 @@
             _listview.DisplayListsSectionUI();
             GetOperationType();
         }
-        private void DisplayCreateList()
+        private void DisplayAddList()
         {
             _listview.DisplayAddListUI();
             this.GetOperationType();
         }
-        private void DisplayUpdateList()
+        private void DisplayAddToDoItem()
         {
-            _listview.DisplayUpdateSectionUI();
+            
             GetOperationType();
         }
     }

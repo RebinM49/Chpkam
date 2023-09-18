@@ -27,10 +27,10 @@ namespace TodoListApp.View
         {
             Console.WriteLine("Enter the Id of list you want to delete : ");
             int id;
-            bool success = int.TryParse(Console.ReadLine(),out id);
+            bool success = int.TryParse(Console.ReadLine(), out id);
             if (success)
             {
-                bool deleted =_registerList.DeleteList(id);
+                bool deleted = _registerList.DeleteList(id);
                 if (deleted)
                 {
                     Console.WriteLine($"List by {id} deleted");
@@ -46,12 +46,7 @@ namespace TodoListApp.View
             }
         }
 
-        public void DisplayUpdateSectionUI()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DisplayListsSectionUI()
+        public void DisplayAllSectionUI()
         {
             Console.ResetColor();
             Console.WriteLine("\t<-> <->  This is your ToDo Lists <-> <->");
@@ -75,12 +70,7 @@ namespace TodoListApp.View
             Console.ResetColor();
         }
 
-        public void DisplayListSectionUI()
-        {
-
-        }
-
-        public void DisplayAddListUI()
+        public void DisplayAddSectionUI()
         {
             Console.ResetColor();
             var list = new ToDoList();
@@ -93,10 +83,10 @@ namespace TodoListApp.View
             Console.WriteLine("Enter status for new list : ");
             list.Open = (Console.ReadLine().ToLower()) == "open" ? true : false;
 
-            
+
             _registerList.AddList(list);
 
-            
+
 
 
         }

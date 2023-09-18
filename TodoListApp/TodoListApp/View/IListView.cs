@@ -9,10 +9,8 @@ namespace TodoListApp.View
 {
     public interface IListView
     {
-        public void DisplayListSectionUI();
         public void DisplayDeleteSectionUI();
-        public void DisplayUpdateSectionUI();
-        public void DisplayListsSectionUI();
-        public void DisplayAddListUI();
+        public void DisplayAllSectionUI();
+        public void DisplayAddSectionUI();
     }
 }

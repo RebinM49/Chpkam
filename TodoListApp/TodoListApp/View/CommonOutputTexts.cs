@@ -26,7 +26,8 @@ namespace TodoListApp.View
             Console.ResetColor();
 
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"[1] Create new List \t [2] Show ToDo Lists \t [3] Close a List \t [4] Update existing list");
+            Console.WriteLine($"[1] Create new List \t [2] Show ToDo Lists \t [3] Close a List \t [4] Add ToDo Item" +
+                $"\t [5] Done Item");
             Console.ResetColor();
 
             
