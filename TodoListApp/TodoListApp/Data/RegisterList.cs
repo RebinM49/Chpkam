@@ -8,9 +8,9 @@ using TodoListApp.Model;
 
 namespace TodoListApp.Data
 {
-    public class RegisterList : IRegisterList
+    public class Register<B> : IRegister<ToDoList>
     {
-        public bool AddList(ToDoList todoList)
+        public bool Add(ToDoList todoList)
         {
             using (TodoListDbContext _dbcontext = new TodoListDbContext())
             {
@@ -20,7 +20,7 @@ namespace TodoListApp.Data
             }
             return true;
         }
-        public List<ToDoList> GetAllList()
+        public List<ToDoList> GetAll()
         {
             using (TodoListDbContext _dbcontext = new TodoListDbContext())
             {
@@ -29,7 +29,7 @@ namespace TodoListApp.Data
             }
         }
 
-        public bool DeleteList(int id)
+        public bool Delete(int id)
         {
             using (TodoListDbContext _dbcontext = new TodoListDbContext())
             {
@@ -46,11 +46,11 @@ namespace TodoListApp.Data
 
 
 
-        public ToDoList UpdateList(ToDoList newtodoList)
+        public ToDoList Update(ToDoList newtodoList)
         {
             using(TodoListDbContext _dbcontext = new TodoListDbContext())
             {
-                _dbcontext.Update<ToDoList>(newtodoList);
+                _dbcontext.Update(newtodoList);
                 _dbcontext.SaveChanges();
                 return newtodoList;
             }

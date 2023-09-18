@@ -4,7 +4,7 @@
     {
 
         IListView _listview;
-        I
+        
 
         public MainView(IListView listview)
         {
@@ -52,12 +52,12 @@
 
         private void DisplayLists()
         {
-            _listview.DisplayListsSectionUI();
+            _listview.DisplayAllSectionUI();
             GetOperationType();
         }
         private void DisplayAddList()
         {
-            _listview.DisplayAddListUI();
+            _listview.DisplayAddSectionUI();
             this.GetOperationType();
         }
         private void DisplayAddToDoItem()

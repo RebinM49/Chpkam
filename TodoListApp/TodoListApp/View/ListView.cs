@@ -11,9 +11,9 @@ namespace TodoListApp.View
 {
     public class ListView : IListView
     {
-        IRegisterList _registerList;
+        IRegister<ToDoList> _registerList;
 
-        public ListView(IRegisterList registerList)
+        public ListView(IRegister<ToDoList> registerList)
         {
             _registerList = registerList;
         }
@@ -30,7 +30,7 @@ namespace TodoListApp.View
             bool success = int.TryParse(Console.ReadLine(), out id);
             if (success)
             {
-                bool deleted = _registerList.DeleteList(id);
+                bool deleted = _registerList.Delete(id);
                 if (deleted)
                 {
                     Console.WriteLine($"List by {id} deleted");
@@ -50,7 +50,7 @@ namespace TodoListApp.View
         {
             Console.ResetColor();
             Console.WriteLine("\t<-> <->  This is your ToDo Lists <-> <->");
-            var lists = _registerList.GetAllList();
+            var lists = _registerList.GetAll();
 
             foreach (var list in lists)
             {
@@ -84,7 +84,7 @@ namespace TodoListApp.View
             list.Open = (Console.ReadLine().ToLower()) == "open" ? true : false;
 
 
-            _registerList.AddList(list);
+            _registerList.Add(list);
 
 
 
