@@ -9,28 +9,62 @@ namespace TodoListApp.View
 {
     public static class CommonOutputTexts
     {
-        public static void GenerateHeading (string text)
+        public static void GenerateHeading(string text)
         {
-            
-            var heading = $"ToDo App \n {text} \n";
-            var border = new String('-',heading.Length );
-            Console.WriteLine($"{border}\n{heading}{border}");
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            var heading = new string("ToDo List App");
+            var border = new String('-', Console.WindowWidth);
+            Console.WriteLine($"{border}\n\t\t\t{heading}\n{border}");
+            Console.ResetColor();
         }
 
-        
+
 
         public static void DisplayOperationMenu()
         {
             Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("Operations : \n");
+            Console.WriteLine("\nOperations :");
             Console.ResetColor();
 
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine($"[1] Create new List \t [2] Show ToDo Lists \t [3] Close a List \t [4] Add ToDo Item" +
                 $"\t [5] Done Item");
             Console.ResetColor();
+        }
 
-            
+        public static void Write_UI_Title(string text)
+        {
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write($"{text} :  ");
+            Console.ResetColor();
+        }
+        public static void Write_UI_values(string value)
+        {
+            Console.ResetColor();
+            Console.ForegroundColor= ConsoleColor.DarkYellow;
+            Console.Write(value+"\n");
+            Console.ResetColor();
+        }
+
+        public static void Write_system_messages(string message)
+        {
+            Console.ResetColor();
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
+        public static void App_UI_headings(string message)
+        {
+            Console.ResetColor();
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            string arrows = "\t<-> <-> <->\t";
+            Console.WriteLine($"{arrows}{message}{arrows}\n");
+            Console.ResetColor();
         }
     }
 }

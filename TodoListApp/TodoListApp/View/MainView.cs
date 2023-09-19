@@ -4,26 +4,25 @@
     {
 
         IListView _listview;
+        IListView _itelview;
         
 
-        public MainView(IListView listview)
+        public MainView(IListView listview,IListView itemview)
         {
-
+            _itelview = itemview;
             _listview = listview;
         }
         public void RunView()
         {
             CommonOutputTexts.GenerateHeading("Menu");
-            CommonOutputTexts.DisplayOperationMenu();
+            
             GetOperationType();
         }
 
         private void GetOperationType()
         {
-            Console.ResetColor();
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("Choose Operation type :\t");
-            Console.ResetColor();
+
+            CommonOutputTexts.DisplayOperationMenu();
 
             var input = Console.ReadLine();
 
@@ -62,7 +61,7 @@
         }
         private void DisplayAddToDoItem()
         {
-            
+            _itelview.DisplayAddSectionUI();
             GetOperationType();
         }
     }

@@ -25,7 +25,7 @@ namespace TodoListApp.View
 
         public void DisplayDeleteSectionUI()
         {
-            Console.WriteLine("Enter the Id of list you want to delete : ");
+            CommonOutputTexts.Write_UI_Title("Enter the Id of list you want to delete : ");
             int id;
             bool success = int.TryParse(Console.ReadLine(), out id);
             if (success)
@@ -33,62 +33,61 @@ namespace TodoListApp.View
                 bool deleted = _registerList.Delete(id);
                 if (deleted)
                 {
-                    Console.WriteLine($"List by {id} deleted");
+                    CommonOutputTexts.Write_system_messages($"List by {id} deleted");
                 }
                 else
                 {
-                    Console.WriteLine("id out of range! ");
+                    CommonOutputTexts.Write_system_messages("id out of range! ");
                 }
             }
             else
             {
-                Console.WriteLine("The Id you Entered is invalid");
+                CommonOutputTexts.Write_system_messages("The Id you entered is invalid");
             }
         }
 
         public void DisplayAllSectionUI()
         {
-            Console.ResetColor();
-            Console.WriteLine("\t<-> <->  This is your ToDo Lists <-> <->");
+            
+            CommonOutputTexts.App_UI_headings("This is your ToDo Lists");
             var lists = _registerList.GetAll();
 
             foreach (var list in lists)
             {
-                Console.ForegroundColor = ConsoleColor.Magenta;
                 if (list.Open)
                 {
-                    Console.WriteLine($"Id : {list.Id}\t Title : {list.Title}\t Description : {list.Description}\t");
+                    CommonOutputTexts.Write_UI_Title("Id");
+                    CommonOutputTexts.Write_UI_values($"{list.Id}");
+                    CommonOutputTexts.Write_UI_Title("Title");
+                    CommonOutputTexts.Write_UI_values($"{list.Title}");
+                    CommonOutputTexts.Write_UI_Title("Description");
+                    CommonOutputTexts.Write_UI_values($"{list.Description}");
+
                     foreach (var task in list.Tasks)
                     {
-                        Console.ResetColor();
-                        Console.WriteLine();
-                        Console.WriteLine($"Item {task.Id}\t{task.Title}");
+                        CommonOutputTexts.Write_UI_Title("ToDo Items");
+                        CommonOutputTexts.Write_UI_values($"{task.Id} {task.Title}");
+
                     }
                 }
-                Console.WriteLine();
+                Console.WriteLine("\n");
             }
-            Console.ResetColor();
+            
         }
 
         public void DisplayAddSectionUI()
-        {
-            Console.ResetColor();
+        {  
             var list = new ToDoList();
-            Console.WriteLine("Enter Title for new List : ");
+            CommonOutputTexts.Write_UI_Title("Enter Title for new List");
             list.Title = Console.ReadLine();
 
-            Console.WriteLine("Enter description for new list : ");
+            CommonOutputTexts.Write_UI_Title("Enter description for new list");
             list.Description = Console.ReadLine();
 
-            Console.WriteLine("Enter status for new list : ");
+            CommonOutputTexts.Write_UI_Title("Enter status for new list");
             list.Open = (Console.ReadLine().ToLower()) == "open" ? true : false;
 
-
             _registerList.Add(list);
-
-
-
-
         }
     }
 }
