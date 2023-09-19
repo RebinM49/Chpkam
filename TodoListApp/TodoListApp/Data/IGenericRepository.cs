@@ -7,11 +7,12 @@ using TodoListApp.Model;
 
 namespace TodoListApp.Data
 {
-    public interface IRegister<T> where T : class
+    public interface IGenericRepository<T> where T : class
     {
-        public bool Add(T todoList);
+        public bool Add(T item);
         public bool Delete(int id);
-        public T Update(T todoList);
-        public List<T> GetAll();
+        public T Update(T item);
+        public IEnumerable<T> GetAll();
+        public T GetById(int id);
     }
 }

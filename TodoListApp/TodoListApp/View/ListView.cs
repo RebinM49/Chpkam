@@ -11,9 +11,9 @@ namespace TodoListApp.View
 {
     public class ListView : IListView
     {
-        IRegister<ToDoList> _registerList;
+        IGenericRepository<ToDoList> _registerList;
 
-        public ListView(IRegister<ToDoList> registerList)
+        public ListView(IGenericRepository<ToDoList> registerList)
         {
             _registerList = registerList;
         }
