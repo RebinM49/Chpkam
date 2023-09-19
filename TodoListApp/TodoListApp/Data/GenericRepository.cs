@@ -42,7 +42,7 @@ namespace TodoListApp.Data
 
         public bool Delete(int id)
         {
-            
+
 
             var list = _dbcontext.ToDoList.Find(id);
             if (list != null)
