@@ -27,7 +27,17 @@ namespace TodoListApp.Data
         }
         public virtual IEnumerable<T> GetAll()
         {
-            return _table.ToList();
+            IQueryable<T> query = _table;
+            var properties = typeof(T).GetProperties()
+               .Where(p => p.PropertyType.IsGenericType && p.PropertyType.GetGenericTypeDefinition() == typeof(List<>)
+                        && p.PropertyType.GetGenericArguments()[0] == typeof(ToDoItem));
+
+
+            foreach (var property in properties)
+            {
+                query = query.Include(property.Name);
+            }
+            return query.ToList();
         }
 
         public bool Delete(int id)
