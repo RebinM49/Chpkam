@@ -30,7 +30,7 @@ namespace TodoListApp.Data
             IQueryable<T> query = _table;
             var properties = typeof(T).GetProperties()
                .Where(p => p.PropertyType.IsGenericType && p.PropertyType.GetGenericTypeDefinition() == typeof(List<>)
-                        && p.PropertyType.GetGenericArguments()[0] == typeof(ToDoItem));
+                        && p.PropertyType.GetGenericArguments()[0] == typeof(ToDoTask));
 
 
             foreach (var property in properties)
@@ -42,8 +42,6 @@ namespace TodoListApp.Data
 
         public bool Delete(int id)
         {
-
-
             var list = _dbcontext.ToDoList.Find(id);
             if (list != null)
             {
@@ -63,9 +61,10 @@ namespace TodoListApp.Data
             return item;
         }
 
-        T IGenericRepository<T>.GetById(int id)
+        public T? GetById(int id)
         {
-            return _table.Find(id);
+            T? item = _table.Find(id);
+            return item;
         }
     }
 }
