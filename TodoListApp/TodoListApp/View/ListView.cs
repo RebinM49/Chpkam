@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TodoListApp.Data;
 using TodoListApp.Model;
+using TodoListApp.View.Abstraction;
 
 namespace TodoListApp.View
 {
@@ -48,7 +49,7 @@ namespace TodoListApp.View
 
         public void DisplayAllSectionUI()
         {
-            
+
             CommonOutputTexts.App_UI_headings("This is your ToDo Lists");
             var lists = _registerList.GetAll();
 
@@ -72,11 +73,11 @@ namespace TodoListApp.View
                 }
                 Console.WriteLine("\n");
             }
-            
+
         }
 
         public void DisplayAddSectionUI()
-        {  
+        {
             var list = new ToDoList();
             CommonOutputTexts.Write_UI_Title("Enter Title for new List");
             list.Title = Console.ReadLine();
@@ -88,6 +89,16 @@ namespace TodoListApp.View
             list.Open = (Console.ReadLine().ToLower()) == "open" ? true : false;
 
             _registerList.Add(list);
+        }
+
+        public void DisplayUpdateSecionUI()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DisplaySingleItemSectionUI()
+        {
+            throw new NotImplementedException();
         }
     }
 }

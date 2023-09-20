@@ -1,11 +1,12 @@
-﻿namespace TodoListApp.View
+﻿using TodoListApp.View.Abstraction;
+
+namespace TodoListApp.View
 {
     public  class MainView : IView
     {
 
         IListView _listview;
         IListView _itelview;
-        
 
         public MainView(IListView listview,IListView itemview)
         {
@@ -23,6 +24,7 @@
         {
 
             CommonOutputTexts.DisplayOperationMenu();
+            CommonOutputTexts.Write_UI_Title("Enter operation code");
 
             var input = Console.ReadLine();
 
@@ -39,6 +41,12 @@
                     break;
                 case "4":
                     DisplayAddToDoItem();
+                    break;
+                case "5":
+                    DisplayToDoTasks();
+                    break;
+                case "6":
+                    DisplayCheckTask();
                     break;
             }
         }
@@ -62,6 +70,16 @@
         private void DisplayAddToDoItem()
         {
             _itelview.DisplayAddSectionUI();
+            GetOperationType();
+        }
+        private void DisplayToDoTasks()
+        {
+            _itelview.DisplayAllSectionUI();
+            GetOperationType();
+        }
+        private void DisplayCheckTask()
+        {
+            _itelview.DisplayUpdateSecionUI();
             GetOperationType();
         }
     }
