@@ -16,7 +16,7 @@ namespace TodoListApp.Model
         public String? Description { get; set; }
         
 
-        public virtual List<ToDoItem> Tasks { get; set; }
+        public virtual List<ToDoTask> Tasks { get; set; }
 
         
     }

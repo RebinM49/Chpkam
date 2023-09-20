@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TodoListApp.Model
 {
-    public class ToDoItem
+    public class ToDoTask
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
