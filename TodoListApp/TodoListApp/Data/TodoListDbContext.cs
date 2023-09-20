@@ -19,6 +19,6 @@ namespace TodoListApp.Data
         }
 
         public DbSet<ToDoList> ToDoList { get; set; }
-        public DbSet<ToDoItem> TodoItem { get; set; }
+        public DbSet<ToDoTask> TodoItem { get; set; }
     }
 }
