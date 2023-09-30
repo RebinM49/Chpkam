@@ -20,10 +20,9 @@ namespace TodoListApp.Data
         }
         public bool Add(T item)
         {
-            _table.Add(item);
-            _dbcontext.SaveChanges();
-
-            return true;
+                _table.Add(item);
+                _dbcontext.SaveChanges();
+                return true;
         }
         public virtual IEnumerable<T> GetAll()
         {
@@ -42,10 +41,10 @@ namespace TodoListApp.Data
 
         public bool Delete(int id)
         {
-            var list = _dbcontext.ToDoList.Find(id);
+            var list = _table.Find(id);
             if (list != null)
             {
-                _dbcontext.ToDoList.Remove(list);
+                _dbcontext.Remove(list);
                 _dbcontext.SaveChanges();
                 return true;
             }
