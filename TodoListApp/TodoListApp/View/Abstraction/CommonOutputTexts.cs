@@ -17,6 +17,7 @@ namespace TodoListApp.View
             var border = new String('-', Console.WindowWidth);
             Console.WriteLine($"{border}\n\t\t\t{heading}\n{border}");
             Console.ResetColor();
+            Console.WriteLine();
         }
 
 
@@ -25,13 +26,14 @@ namespace TodoListApp.View
         {
             Console.ResetColor();
             Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("\nOperations :");
+            Console.WriteLine("Operations :");
             Console.ResetColor();
 
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine($"[1] Create new List \t [2] Show ToDo Lists \t [3] Close a List \t [4] Add ToDo Item \t [5] Show ToDo Task" +
                 $"\t [6] Done Item");
             Console.ResetColor();
+            Console.WriteLine();
         }
 
         public static void Write_UI_Title(string text)
@@ -40,13 +42,15 @@ namespace TodoListApp.View
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write($"{text} :  ");
             Console.ResetColor();
+            Console.WriteLine();
         }
         public static void Write_UI_values(string value)
         {
             Console.ResetColor();
             Console.ForegroundColor= ConsoleColor.DarkYellow;
-            Console.Write(value+"\n");
+            Console.Write(value);
             Console.ResetColor();
+            Console.WriteLine();
         }
 
         public static void Write_system_messages(string message)
@@ -57,6 +61,7 @@ namespace TodoListApp.View
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
             Console.ResetColor();
+            Console.WriteLine();
         }
 
         public static void App_UI_headings(string message)
@@ -66,8 +71,9 @@ namespace TodoListApp.View
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.ForegroundColor = ConsoleColor.Yellow;
             string arrows = "\t<-> <-> <->\t";
-            Console.WriteLine($"{arrows}{message}{arrows}\n");
+            Console.WriteLine($"{arrows}{message}{arrows}");
             Console.ResetColor();
+            Console.WriteLine();
         }
     }
 }
