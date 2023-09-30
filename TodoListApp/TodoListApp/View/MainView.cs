@@ -2,13 +2,13 @@
 
 namespace TodoListApp.View
 {
-    public  class MainView : IView
+    public class MainView : IView
     {
 
         IListView _listview;
         IListView _itelview;
 
-        public MainView(IListView listview,IListView itemview)
+        public MainView(IListView listview, IListView itemview)
         {
             _itelview = itemview;
             _listview = listview;
@@ -16,7 +16,6 @@ namespace TodoListApp.View
         public void RunView()
         {
             CommonOutputTexts.GenerateHeading("Menu");
-            
             GetOperationType();
         }
 
@@ -27,6 +26,7 @@ namespace TodoListApp.View
             CommonOutputTexts.Write_UI_Title("Enter operation code");
 
             var input = Console.ReadLine();
+
 
             switch (input)
             {
@@ -40,7 +40,7 @@ namespace TodoListApp.View
                     DisplayCloseList();
                     break;
                 case "4":
-                    DisplayAddToDoItem();
+                    DisplayAddToDoTask();
                     break;
                 case "5":
                     DisplayToDoTasks();
@@ -48,8 +48,17 @@ namespace TodoListApp.View
                 case "6":
                     DisplayCheckTask();
                     break;
+                case "7":
+                    DisplaySpecificTask();
+                    break;
+                default:
+                    CommonOutputTexts.Write_system_messages("Enter Valid number!");
+                    GetOperationType();
+                    break;
             }
+
         }
+
 
         private void DisplayCloseList()
         {
@@ -67,7 +76,7 @@ namespace TodoListApp.View
             _listview.DisplayAddSectionUI();
             this.GetOperationType();
         }
-        private void DisplayAddToDoItem()
+        private void DisplayAddToDoTask()
         {
             _itelview.DisplayAddSectionUI();
             GetOperationType();
@@ -80,6 +89,11 @@ namespace TodoListApp.View
         private void DisplayCheckTask()
         {
             _itelview.DisplayUpdateSecionUI();
+            GetOperationType();
+        }
+        private void DisplaySpecificTask()
+        {
+            _itelview.DisplaySingleItemSectionUI();
             GetOperationType();
         }
     }
